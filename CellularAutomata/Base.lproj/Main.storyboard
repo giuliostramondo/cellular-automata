@@ -672,12 +672,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="800"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-DK-Sdy">
-                                <rect key="frame" x="0.0" y="0.0" width="1000" height="733"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-DK-Sdy">
+                                <rect key="frame" x="0.0" y="34" width="1000" height="733"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Fgs-Ub-ddf"/>
                             </imageView>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChD-0E-lyR">
-                                <rect key="frame" x="477" y="778" width="131" height="22"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ChD-0E-lyR">
+                                <rect key="frame" x="435" y="775" width="131" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="dz9-no-dvP"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="YMK-7T-XcY">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="7wO-lz-g3b"/>
                                     <font key="font" metaFont="system"/>
@@ -685,8 +688,24 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1QF-tp-7PA">
-                                <rect key="frame" x="313" y="776" width="159" height="26"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Su7-qU-Wds">
+                                <rect key="frame" x="577" y="769" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="DCk-ZL-Qov"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Simulate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Osd-vs-Qzg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="runSimulation:" target="XfG-lQ-9wD" id="jBy-VQ-Od5"/>
+                                </connections>
+                            </button>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1QF-tp-7PA">
+                                <rect key="frame" x="266" y="773" width="159" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="aMm-Fz-g2f"/>
+                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6Es-j0-2vo" id="oTU-UU-wJf">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -699,17 +718,19 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Su7-qU-Wds">
-                                <rect key="frame" x="610" y="772" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Simulate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Osd-vs-Qzg">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runSimulation:" target="XfG-lQ-9wD" id="jBy-VQ-Od5"/>
-                                </connections>
-                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Wub-DK-Sdy" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="6yT-wp-IJi"/>
+                            <constraint firstAttribute="bottom" secondItem="Wub-DK-Sdy" secondAttribute="bottom" constant="34" id="BGY-Pc-Ez8"/>
+                            <constraint firstItem="Su7-qU-Wds" firstAttribute="leading" secondItem="ChD-0E-lyR" secondAttribute="trailing" constant="17" id="FJR-1T-VrM"/>
+                            <constraint firstItem="Wub-DK-Sdy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Jdw-Et-uwV"/>
+                            <constraint firstItem="ChD-0E-lyR" firstAttribute="leading" secondItem="1QF-tp-7PA" secondAttribute="trailing" constant="13" id="TbP-zs-QIT"/>
+                            <constraint firstItem="ChD-0E-lyR" firstAttribute="top" secondItem="Su7-qU-Wds" secondAttribute="top" id="WD9-X6-fXf"/>
+                            <constraint firstItem="Wub-DK-Sdy" firstAttribute="top" secondItem="ChD-0E-lyR" secondAttribute="bottom" constant="8" symbolic="YES" id="ZBd-qp-xn3"/>
+                            <constraint firstItem="Su7-qU-Wds" firstAttribute="baseline" secondItem="1QF-tp-7PA" secondAttribute="baseline" id="fVd-VB-RZZ"/>
+                            <constraint firstItem="ChD-0E-lyR" firstAttribute="centerX" secondItem="Wub-DK-Sdy" secondAttribute="centerX" id="thP-Dt-F0q"/>
+                            <constraint firstAttribute="trailing" secondItem="Wub-DK-Sdy" secondAttribute="trailing" id="wxc-SU-YaH"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="ComboAutomaType" destination="1QF-tp-7PA" id="z21-Bl-7xN"/>
