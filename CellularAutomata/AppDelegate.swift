@@ -3,7 +3,7 @@
 //  CellularAutomata
 //
 //  Created by Giulio Stramondo on 21/04/16.
-//  Copyright © 2016 ArancinoProject. All rights reserved.
+//  Copyright © 2016 Giulio Stramondo. All rights reserved.
 //
 
 import Cocoa
@@ -21,6 +21,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    
+    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+        return true
+    }
 
 }
 
