@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="8191"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -672,14 +673,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="800"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-DK-Sdy">
-                                <rect key="frame" x="0.0" y="34" width="1000" height="733"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Fgs-Ub-ddf"/>
-                            </imageView>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ChD-0E-lyR">
                                 <rect key="frame" x="435" y="775" width="131" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="131" id="dz9-no-dvP"/>
+                                    <constraint firstAttribute="width" constant="131" id="0mo-Zc-5Mg"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="YMK-7T-XcY">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="7wO-lz-g3b"/>
@@ -691,7 +688,7 @@
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Su7-qU-Wds">
                                 <rect key="frame" x="577" y="769" width="82" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="DCk-ZL-Qov"/>
+                                    <constraint firstAttribute="width" constant="70" id="UPX-B8-B9Q"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Simulate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Osd-vs-Qzg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -704,7 +701,7 @@
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1QF-tp-7PA">
                                 <rect key="frame" x="266" y="773" width="159" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="aMm-Fz-g2f"/>
+                                    <constraint firstAttribute="width" constant="154" id="FSr-2f-XD3"/>
                                 </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6Es-j0-2vo" id="oTU-UU-wJf">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -718,29 +715,33 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <ikImageView wantsLayer="YES" zoomFactor="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Qva-wq-Uj5">
+                                <rect key="frame" x="0.0" y="5" width="1000" height="756"/>
+                                <color key="backgroundColor" red="0.50002289" green="0.50002289" blue="0.50002289" alpha="1" colorSpace="deviceRGB"/>
+                            </ikImageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Wub-DK-Sdy" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="6yT-wp-IJi"/>
-                            <constraint firstAttribute="bottom" secondItem="Wub-DK-Sdy" secondAttribute="bottom" constant="34" id="BGY-Pc-Ez8"/>
-                            <constraint firstItem="Su7-qU-Wds" firstAttribute="leading" secondItem="ChD-0E-lyR" secondAttribute="trailing" constant="17" id="FJR-1T-VrM"/>
-                            <constraint firstItem="Wub-DK-Sdy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Jdw-Et-uwV"/>
-                            <constraint firstItem="ChD-0E-lyR" firstAttribute="leading" secondItem="1QF-tp-7PA" secondAttribute="trailing" constant="13" id="TbP-zs-QIT"/>
-                            <constraint firstItem="ChD-0E-lyR" firstAttribute="top" secondItem="Su7-qU-Wds" secondAttribute="top" id="WD9-X6-fXf"/>
-                            <constraint firstItem="Wub-DK-Sdy" firstAttribute="top" secondItem="ChD-0E-lyR" secondAttribute="bottom" constant="8" symbolic="YES" id="ZBd-qp-xn3"/>
-                            <constraint firstItem="Su7-qU-Wds" firstAttribute="baseline" secondItem="1QF-tp-7PA" secondAttribute="baseline" id="fVd-VB-RZZ"/>
-                            <constraint firstItem="ChD-0E-lyR" firstAttribute="centerX" secondItem="Wub-DK-Sdy" secondAttribute="centerX" id="thP-Dt-F0q"/>
-                            <constraint firstAttribute="trailing" secondItem="Wub-DK-Sdy" secondAttribute="trailing" id="wxc-SU-YaH"/>
+                            <constraint firstItem="Su7-qU-Wds" firstAttribute="leading" secondItem="ChD-0E-lyR" secondAttribute="trailing" constant="17" id="4Qy-Tc-NKy"/>
+                            <constraint firstAttribute="trailing" secondItem="Qva-wq-Uj5" secondAttribute="trailing" id="5ZY-IP-uuF"/>
+                            <constraint firstItem="Qva-wq-Uj5" firstAttribute="top" secondItem="ChD-0E-lyR" secondAttribute="bottom" constant="14" id="Q5r-CS-bN2"/>
+                            <constraint firstItem="ChD-0E-lyR" firstAttribute="top" secondItem="Su7-qU-Wds" secondAttribute="top" id="R7M-yW-oa2"/>
+                            <constraint firstAttribute="bottom" secondItem="Qva-wq-Uj5" secondAttribute="bottom" constant="5" id="Uwt-0R-wGT"/>
+                            <constraint firstItem="Qva-wq-Uj5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="i6E-gu-cVX"/>
+                            <constraint firstItem="ChD-0E-lyR" firstAttribute="leading" secondItem="1QF-tp-7PA" secondAttribute="trailing" constant="13" id="pda-Zr-Egy"/>
+                            <constraint firstItem="1QF-tp-7PA" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="3" id="qDQ-Um-Sz4"/>
+                            <constraint firstItem="ChD-0E-lyR" firstAttribute="centerX" secondItem="Qva-wq-Uj5" secondAttribute="centerX" id="qqN-ax-WxC"/>
+                            <constraint firstItem="1QF-tp-7PA" firstAttribute="baseline" secondItem="Su7-qU-Wds" secondAttribute="baseline" id="uuz-fX-0g8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ComboAutomaType" destination="1QF-tp-7PA" id="z21-Bl-7xN"/>
-                        <outlet property="ImageField" destination="Wub-DK-Sdy" id="fCX-UT-qNL"/>
+                        <outlet property="IKImageViewField" destination="Qva-wq-Uj5" id="iMC-rP-Pc4"/>
                         <outlet property="RuleField" destination="ChD-0E-lyR" id="JVb-aA-lSb"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89" y="728"/>
+            <point key="canvasLocation" x="-141" y="578"/>
         </scene>
     </scenes>
 </document>

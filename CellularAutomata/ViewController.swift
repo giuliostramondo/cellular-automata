@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Quartz
 
 class ViewController: NSViewController {
 
@@ -17,12 +18,14 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var ImageField: NSImageView!
     
+    @IBOutlet weak var IKImageViewField: IKImageView!
+    
     var AutomaRow: [Bool] = []
     var tmpAutomaRow: [Bool] = []
     
     var BinaryRule:[Bool] = []
     
-    var simulationWidth = 1700
+    var simulationWidth = 2000
     override func viewDidLoad() {
         super.viewDidLoad()
         let tmpAutoma = NSImage(size: NSSize(width: simulationWidth, height: 733))
@@ -32,11 +35,17 @@ class ViewController: NSViewController {
         tmpAutoma.unlockFocus()
         var imageRect = NSMakeRect(0.0,0.0,tmpAutoma.size.width,tmpAutoma.size.height);
         
-        ImageField.frame=imageRect
+       // ImageField.frame=imageRect
         
-        ImageField.image = tmpAutoma
+
+            var tmpAutomaCGImage : CGImage = nsImageToCGImage(tmpAutoma)
         
-        print(ImageField.bounds)
+
+        
+        IKImageViewField.setImage(tmpAutomaCGImage,imageProperties: nil)
+        //ImageField.image = tmpAutoma
+        
+       // print(ImageField.bounds)
         ComboAutomaType.removeAllItems()
         ComboAutomaType.addItemsWithTitles(["1D-Rule 2-Colors","1D-Rule 3-Colors"])
 
@@ -45,6 +54,18 @@ class ViewController: NSViewController {
         }
     }
 
+    func nsImageToCGImage(image: NSImage)->CGImage
+    {
+    var imgData: NSData = image.TIFFRepresentation!
+    var imgRef: CGImageRef? = nil;
+
+     var imageSource: CGImageSource = CGImageSourceCreateWithData(imgData,  nil)!;
+
+    imgRef = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
+    
+    
+     return imgRef!;
+    }
     func drawRow(RowToDraw: [Bool], RowNumber: Int){
         if(RowNumber * 2 > 733){ return }
         for i in 0...(simulationWidth/2)-2{
@@ -92,7 +113,10 @@ class ViewController: NSViewController {
                 continue
             }
         }
+        newRow[0]=newRow[1]
         newRow.append(false)
+        newRow[(simulationWidth/2)-1] = newRow[(simulationWidth/2)-2]
+        
         return newRow
     }
 
@@ -136,14 +160,16 @@ class ViewController: NSViewController {
                     drawRow(tmpAutomaRow, RowNumber: i)
                     AutomaRow=tmpAutomaRow
                 }
-                //NSColor.blackColor().set()
-                //NSRectFill(NSMakeRect(500, 723, 2, 2))
+
                 newAutoma.unlockFocus()
                 var imageRect = NSMakeRect(0.0,0.0,newAutoma.size.width,newAutoma.size.height);
 
-               // ImageField.frame=imageRect
-                ImageField.image=newAutoma
-                //ImageField.sizeThatFits(newAutoma.size)            }
+                var tmpNewAutomaCGImage : CGImage = nsImageToCGImage(newAutoma)
+                
+                
+                
+                IKImageViewField.setImage(tmpNewAutomaCGImage,imageProperties: nil)
+
         }
 
     
